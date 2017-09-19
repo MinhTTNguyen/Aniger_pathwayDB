@@ -5,7 +5,7 @@
 use strict;
 use File::Fetch;
 
-my $kegg_org_code="ang"; # organism code of A. niger in KEGG is "ang"
+my $kegg_org_code="ang";
 my $folder_pwy_entries="KEGG_Aniger_pwy_entries";
 mkdir $folder_pwy_entries;
 chdir $folder_pwy_entries;
