@@ -53,12 +53,19 @@ while (<GMT>)
 	foreach my $cbs_id (@cols)
 	{
 		my $corr_nrrl3_ids=$hash_cbs_nrrl3{$cbs_id};
-		my @arr_nrrl3_ids=split(/\t/,$corr_nrrl3_ids);
-		foreach my $each_nrrl3 (@arr_nrrl3_ids){$hash_nrrl3_ids{$each_nrrl3}++;}
+		if ($corr_nrrl3_ids)
+		{
+			my @arr_nrrl3_ids=split(/\t/,$corr_nrrl3_ids);
+			foreach my $each_nrrl3 (@arr_nrrl3_ids){$hash_nrrl3_ids{$each_nrrl3}++;}
+		}
 	}
 	my @arr_nrrl3_ids_nr=keys(%hash_nrrl3_ids);
-	my $nrrl3_ids_nr=join("\t",@arr_nrrl3_ids_nr);
-	print Out "$pathway_name\t$pathway_desc\t$nrrl3_ids_nr\n";
+	my $number_of_nnrl3_ids=scalar(@arr_nrrl3_ids_nr);
+	if ($number_of_nnrl3_ids>0)
+	{
+		my $nrrl3_ids_nr=join("\t",@arr_nrrl3_ids_nr);
+		print Out "$pathway_name\t$pathway_desc\t$nrrl3_ids_nr\n";
+	}
 }
 close(GMT);
 close(Out);
